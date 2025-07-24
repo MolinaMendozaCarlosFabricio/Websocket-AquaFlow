@@ -1,8 +1,8 @@
 import { Measurements } from "./SensorReadings/Measurements";
-import { SensorReadings } from "./SensorReadings/SensorReadings";
+import { WaterActivitiesList } from "./WaterActivities/WaterActivitiesList";
 
 export interface SocketRepository{
-    emitEventoGlobal(evento: string, payload: any): void
     emitSensorReadings(user_id: string, payload: Measurements): void
     emitNotification(user_id: string, payload: Notification): void
+    emitWaterActivities(user_id: string, payload: WaterActivitiesList): void
 }
