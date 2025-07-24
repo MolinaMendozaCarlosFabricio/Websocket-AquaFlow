@@ -12,11 +12,11 @@ export const socketHandler = (socket: Socket) => {
     const emitNotificationUseCase = new EmitNotificationUseCase(socketAdapter);
     const emitWaterActivities = new EmitWaterActivitiesUseCase(socketAdapter);
 
-    socket.on('new_many_sensor_readings', ({ userID, sensorReadings }: { userID: number, sensorReadings: PayloadSensorReadings }) => {
+    socket.on('new_many_sensor_readings', ({ userID, sensorReadings }: { userID: string, sensorReadings: PayloadSensorReadings }) => {
         emitSensorReadingsUseCase.execute(userID, sensorReadings);
     });
 
-    socket.on('new_notification', ({ userID, notification }: { userID: number, notification: Notification }) => {
+    socket.on('new_notification', ({ userID, notification }: { userID: string, notification: Notification }) => {
         emitNotificationUseCase.execute(userID, notification);
     });
 

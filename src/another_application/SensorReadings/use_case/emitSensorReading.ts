@@ -9,7 +9,7 @@ export class EmitSensorReadingsUseCase {
         this.ws = ws;
     }
 
-    public execute(user_id: number, payload: PayloadSensorReadings) {
+    public execute(user_id: string, payload: PayloadSensorReadings) {
         console.log(user_id);
         console.log(payload);
 
@@ -20,6 +20,6 @@ export class EmitSensorReadingsUseCase {
             temperature: payload.sensorReadings[2],
             turbidity: payload.sensorReadings[3],
         };
-        this.ws.emitSensorReadings(user_id.toString(), measurements);
+        this.ws.emitSensorReadings(user_id, measurements);
     }
 }

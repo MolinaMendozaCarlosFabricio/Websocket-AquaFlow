@@ -7,7 +7,7 @@ export class EmitNotificationUseCase {
         this.ws = ws;
     }
 
-    public execute(user_id: number, notification: Notification){
-        this.ws.emitNotification(user_id.toString(), notification);
+    public execute(user_id: string, notification: Notification){
+        this.ws.emitNotification(user_id, notification);
     }
 }
