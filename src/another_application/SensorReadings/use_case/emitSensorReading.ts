@@ -3,7 +3,7 @@ import { PayloadSensorReadings } from "../../../domain/SensorReadings/Payload_Se
 import { SocketRepository } from "../../../domain/Socket_repository";
 
 export class EmitSensorReadingsUseCase {
-    ws: SocketRepository
+    ws: SocketRepository;
     
     constructor(ws: SocketRepository){
         this.ws = ws;
