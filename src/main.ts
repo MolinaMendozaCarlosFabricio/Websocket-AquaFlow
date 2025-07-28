@@ -1,8 +1,8 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import { socketHandler } from './src/infrastructure/socket.io/handlers/SocketHandler';
-import { startDependencies } from './src/infrastructure/dependencies';
+import { socketHandler } from './infrastructure/socket.io/handlers/SocketHandler';
+import { startDependencies } from './infrastructure/dependencies';
 
 const app = express();
 const httpServer = createServer(app);
