@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { socketHandler } from './src/infrastructure/socket.io/handlers/SocketHandler';
 import { startDependencies } from './src/infrastructure/dependencies';
+import { startRabbitConsumer } from './src/infrastructure/rabbitMQ/adapters/RabbitMQ';
 
 const app = express();
 const httpServer = createServer(app);
@@ -21,6 +22,8 @@ io.on("connection", (socket) => {
 
     socketHandler(socket);
 });
+
+startRabbitConsumer()
 
 httpServer.listen(8000, () => {
     console.log("Socket.io on line")
