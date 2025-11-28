@@ -5,6 +5,7 @@ import { SensorReadings } from '../../../domain/SensorReadings/SensorReadings';
 import { Measurements } from '../../../domain/SensorReadings/Measurements';
 import { SocketRepository } from '../../../domain/Socket_repository';
 import { WaterActivitiesList } from '../../../domain/WaterActivities/WaterActivitiesList';
+import { Notifications } from '../../../domain/Notifications/Notifications';
 
 export class SocketAdapter implements SocketRepository {
   constructor(private io: Server){}
@@ -14,7 +15,7 @@ export class SocketAdapter implements SocketRepository {
     this.io.to(user_id).emit("send_sensor_readings", payload)
   }
 
-  public emitNotification(user_id: string, payload: Notification) {
+  public emitNotification(user_id: string, payload: Notifications) {
     console.log("Emitiendo una lectura de sensor al usuario ", user_id, ":", payload);
     this.io.to(user_id).emit("send_notification", payload);
   }

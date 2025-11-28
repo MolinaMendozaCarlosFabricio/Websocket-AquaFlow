@@ -1,8 +1,10 @@
-export interface WaterActivitiesList {
-    user_id: string,
-    filtrer_id: string,
-    water_activities_list: {
-        water_activity: string,
-        percentage: number
-    }[]
-}
+import * as z from "zod/v4";
+import { WaterActivitiesSchema } from "./WaterActivities";
+
+export const WaterActivitiesListSchema = z.object({
+    user_id: z.string(),
+    filtrer_id: z.string(),
+    water_activities_list: z.array(WaterActivitiesSchema),
+});
+
+export type WaterActivitiesList = z.infer<typeof WaterActivitiesListSchema>
