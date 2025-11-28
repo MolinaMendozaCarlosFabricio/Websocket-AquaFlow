@@ -32,6 +32,7 @@ export const startRabbitConsumer = async () => {
                 const topicKey = msg.fields.routingKey;
 
                 console.log("Mensaje recibido del tópico:", topicKey);
+                console.log("Contenido del mensaje:", content)
 
                 try{
                     if (topicKey == CONFIG.topic + ".water_activities"){
