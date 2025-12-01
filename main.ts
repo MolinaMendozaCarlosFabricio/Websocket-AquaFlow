@@ -13,18 +13,18 @@ const io = new Server (httpServer, {
 
 startDependencies(io)
 
-    io.on("connection", (socket) => {
-        console.log("Usuario conectado:", socket.id);
+io.on("connection", (socket) => {
+    console.log("Usuario conectado:", socket.id);
 
-        socket.on('join_room', (room: string) => {
-            socket.join(room); // Siendo la room, el ID del usuario
-        });
-
-        socketHandler(socket);
+    socket.on('join_room', (room: string) => {
+        socket.join(room); // Siendo la room, el ID del usuario
     });
 
-    startRabbitConsumer();
+    socketHandler(socket);
+});
 
-    httpServer.listen(8000, () => {
-        console.log("Socket.io en línea");
-    });
+startRabbitConsumer();
+
+httpServer.listen(8000, () => {
+    console.log("Socket.io en línea");
+});
