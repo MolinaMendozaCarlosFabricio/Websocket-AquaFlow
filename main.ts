@@ -1,5 +1,3 @@
-import os from 'os';
-import cluster from 'cluster';
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
@@ -15,21 +13,6 @@ const io = new Server (httpServer, {
 
 startDependencies(io)
 
-const CPUsAvailable = os.cpus().length;
-
-if (cluster.isPrimary) {
-    console.log(`Cantidad de CPU's: ${CPUsAvailable}`);
-    console.log(`PID del proceso padre: ${process.pid}`);
-
-    for (let i = 0; i < CPUsAvailable; i++)
-        cluster.fork();
-
-    cluster.on('exit', (worker, code, signal) => {
-        console.log(`Worker ${worker.process.pid} terminado`);
-        console.log("Creando nuevo worker");
-        cluster.fork();
-    });
-} else {
     io.on("connection", (socket) => {
         console.log("Usuario conectado:", socket.id);
 
@@ -45,4 +28,3 @@ if (cluster.isPrimary) {
     httpServer.listen(8000, () => {
         console.log("Socket.io en línea");
     });
-}
