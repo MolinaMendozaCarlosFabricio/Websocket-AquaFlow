@@ -47,9 +47,12 @@ export const startRabbitConsumer = async () => {
                     } else {
                         console.log("No se encontró una cola conocida");
                     }
+
+                    channel.ack(msg);
                 }catch(error){
                     console.log("Error al formatear mensaje recibido:", error);
-                    const payload = JSON.parse(msg.content.toString());
+
+                    channel.nack(msg, false, true);
                 }
             }
         });
