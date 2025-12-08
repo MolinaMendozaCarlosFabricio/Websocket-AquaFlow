@@ -3,7 +3,7 @@ import * as z from "zod/v4";
 
 export const PayloadSensorReadingsSchema = z.object({
     idUser: z.string(),
-    idFiltrer: z.string(),
+    idFilter: z.string(),
     sensorReadings: z.array(SensorReadingsSchema),
 });
 

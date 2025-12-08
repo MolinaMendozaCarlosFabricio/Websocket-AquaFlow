@@ -11,17 +11,17 @@ export class SocketAdapter implements SocketRepository {
   constructor(private io: Server){}
 
   public emitSensorReadings(user_id: string, payload: Measurements) {
-    console.log("Emitiendo lecturas de datos al usuario ", user_id, ":", payload);
+    console.log("Emitiendo lecturas de datos al usuario ", user_id);
     this.io.to(user_id).emit("send_sensor_readings", payload)
   }
 
   public emitNotification(user_id: string, payload: Notifications) {
-    console.log("Emitiendo una lectura de sensor al usuario ", user_id, ":", payload);
+    console.log("Emitiendo una lectura de sensor al usuario ", user_id);
     this.io.to(user_id).emit("send_notification", payload);
   }
 
   public emitWaterActivities(user_id: string, payload: WaterActivitiesList) {
-    console.log("Emitiendo actividades con agua al usuario ", user_id, ":", payload);
+    console.log("Emitiendo actividades con agua al usuario ", user_id);
     this.io.to(user_id).emit("send_water_activities", payload);
   }
 

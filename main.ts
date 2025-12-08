@@ -62,8 +62,4 @@ if (cluster.isPrimary) {
     });
 
     startRabbitConsumer();
-
-    httpServer.listen(8000, () => {
-        console.log("Socket.io en línea");
-    });
 }
